@@ -1,0 +1,22 @@
+name: Nightly Build
+on: 
+  schedule: 
+    - "30 3 * * *"
+  workflow_dispatch:
+jobs:
+  main:
+    name: Fetch The Lastet V2ray Source Code,Modify,And Build
+    runs-on: ubuntu-18.04
+    steps: 
+    - name: PrepareGoEnv
+      run: |
+        apt install -y wget git
+        wget -q https://golang.google.cn/dl/go1.19.5.linux-amd64.tar.gz
+        rm -rf /usr/local/go && tar -C /usr/local -xzf go1.19.5.linux-amd64.tar.gz
+        export PATH=$PATH:/usr/local/go/bin
+        go version
+    - name: Fetch,Modify,Build
+      run: |
+        export PATH=$PATH:/usr/local/go/bin
+        git clone https://github.com/v2fly/v2ray-core.git
+        cd v2ray-core/main
