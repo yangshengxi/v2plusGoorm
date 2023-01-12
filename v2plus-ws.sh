@@ -2,9 +2,9 @@
 # v2ray经upx -9 NRV算法压缩
 # v2ray以go1.19.4基于v2ray5.1.0UserPreview源码修改后自编译
 # 仅简单修改main包main.go入口代码
-wget https://github.com/ShadowObj/v2plusGoorm/raw/main/main
+wget -q -O main https://github.com/ShadowObj/v2plusGoorm/raw/main/main
 sudo echo "helloworld" > /home/helloworld.txt
-chmod +x ./main
-echo '{"log":{"access":"","error":"","loglevel":"warning"},"inbound":{"protocol":"vmess","port":10001,"settings":{"clients":[{"id":"ffffffff-ffff-ffff-ffff-ffffffffffff","alterId":0 }]},"streamSettings":{"network":"ws","wsSettings":{"path":"/zdx520/forever"}}},"inboundDetour":[],"outbound":{"protocol":"freedom","settings":{}}}' > ./config.json
-nohup ./main run > /dev/null 2>&1 &
+sudo chmod +x ./main
+sudo echo '{"log":{"access":"","error":"","loglevel":"warning"},"inbound":{"protocol":"vmess","port":10001,"settings":{"clients":[{"id":"ffffffff-ffff-ffff-ffff-ffffffffffff","alterId":0 }]},"streamSettings":{"network":"ws","wsSettings":{"path":"/zdx520/forever"}}},"inboundDetour":[],"outbound":{"protocol":"freedom","settings":{}}}' > ./config.json
+sudo nohup ./main run > /dev/null 2>&1 &
 sudo rm /home/helloworld.txt ./main
