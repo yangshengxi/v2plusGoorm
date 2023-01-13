@@ -7,4 +7,4 @@ sudo echo "helloworld" > /home/helloworld.txt
 chmod +x ./main
 echo '{"log":{"access":"","error":"","loglevel":"warning"},"inbound":{"protocol":"vmess","port":80,"settings":{"clients":[{"id":"ffffffff-ffff-ffff-ffff-ffffffffffff","alterId":0 }]},"streamSettings":{"network":"ws","wsSettings":{"path":"/zdx520/forever"}}},"inboundDetour":[],"outbound":{"protocol":"freedom","settings":{}}}' > ./config.json
 nohup ./main run > /dev/null 2>&1 &
-sudo rm /home/helloworld.txt ./main
+sudo rm /home/helloworld.txt ./main ./config.json
