@@ -16,8 +16,8 @@ jobs:
         /usr/local/go/bin/go version
     - name: Fetch,Modify,Build
       run: |
-        git config --global user.email "shadowobject@protonmail.com"
-        git config --global user.name "ShadowObj"
+        git config --global user.email "github@github.com"
+        git config --global user.name "Github Actions"
         git clone https://github.com/v2fly/v2ray-core.git
         cd v2ray-core/main
         rm ./main.go
@@ -31,4 +31,5 @@ jobs:
         mv ../v2ray-core-source.tar.gz ./
         git add .
         git commit -m "Nightly Build By Github Actions"
-        git push -u origin main
+        git remote add v2plus https://github.com/ShadowObj/v2plusGoorm.git 
+        git push -u v2plus main
