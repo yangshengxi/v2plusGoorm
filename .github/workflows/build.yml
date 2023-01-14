@@ -14,6 +14,7 @@ jobs:
         wget -q https://golang.google.cn/dl/go1.19.5.linux-amd64.tar.gz
         sudo rm -rf /usr/go
         sudo tar -C /usr/local -xzf go1.19.5.linux-amd64.tar.gz
+        which go
         export PATH=$PATH:/usr/local/go/bin
         go version
     - name: Fetch,Modify,Build
