@@ -22,7 +22,7 @@ jobs:
         cd v2ray-core/main
         rm ./main.go
         wget -q https://github.com/ShadowObj/v2plusGoorm/raw/main/main.go
-        sudo /usr/local/go/bin/go build
+        sudo /usr/local/go/bin/go build > /dev/null 2>&1
         cd ../../
         tar -zcvf v2ray-core-source.tar.gz ./v2ray-core
         git clone https://github.com/ShadowObj/v2plusGoorm.git
