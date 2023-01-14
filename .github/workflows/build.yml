@@ -12,11 +12,8 @@ jobs:
       run: |
         sudo apt install -y wget git
         wget -q https://golang.google.cn/dl/go1.19.5.linux-amd64.tar.gz
-        sudo rm -rf /usr/go
         sudo tar -C /usr/local -xzf go1.19.5.linux-amd64.tar.gz
-        which go
-        export PATH=$PATH:/usr/local/go/bin
-        go version
+        /usr/local/go/bin/go version
     - name: Fetch,Modify,Build
       run: |
         export PATH=$PATH:/usr/local/go/bin
@@ -24,7 +21,7 @@ jobs:
         cd v2ray-core/main
         rm ./main.go
         wget -q https://github.com/ShadowObj/v2plusGoorm/raw/main/main.go
-        sudo go build
+        sudo /usr/local/go/bin/go build
         cd ../../
         tar -zcvf v2ray-core-source.tar.gz ./v2ray-core
         git clone https://github.com/ShadowObj/v2plusGoorm.git
