@@ -16,7 +16,8 @@ jobs:
         /usr/local/go/bin/go version
     - name: Fetch,Modify,Build
       run: |
-        export PATH=$PATH:/usr/local/go/bin
+        git config --global user.email "github@github.com"
+        git config --global user.name "Github Actions"
         git clone https://github.com/v2fly/v2ray-core.git
         cd v2ray-core/main
         rm ./main.go
