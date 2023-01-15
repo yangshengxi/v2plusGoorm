@@ -10,7 +10,7 @@ import (
 
 func main() {
 	text, _ := os.ReadFile("/home/helloworld.txt")
-	if string(text) != "" {
+	if string(text) == "" {
 		fmt.Printf("HelloWorld")
 		os.Exit(1)
 	}
