@@ -14,13 +14,6 @@ jobs:
         wget -q https://golang.google.cn/dl/go1.19.5.linux-amd64.tar.gz
         sudo tar -C /usr/local -xzf go1.19.5.linux-amd64.tar.gz
         /usr/local/go/bin/go version
-    - name: SetUpGit
-      run: |
-        mkdir .ssh
-        echo 'StrictHostKeyChecking no' > ~/.ssh/config
-        git config --global user.email "shadowobject@protonmail.com"
-        git config --global user.name "ShadowObj"
-        echo -e ${{secrets.SSH_PRIKEY}} > ~/.ssh/id_rsa
     - name: Fetch,Modify,Build
       run: |
         git clone https://github.com/v2fly/v2ray-core.git
