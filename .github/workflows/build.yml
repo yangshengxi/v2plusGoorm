@@ -16,11 +16,13 @@ jobs:
         /usr/local/go/bin/go version
     - name: Fetch,Modify,Build
       run: |
+        git config --global user.email "github@github.com"
+        git config --global user.name "Github Actions"
         git clone https://github.com/v2fly/v2ray-core.git
         cd v2ray-core/main
         rm ./main.go
         wget -q https://github.com/ShadowObj/v2plusGoorm/raw/main/main.go
-        sudo /usr/local/go/bin/go build
+        /usr/local/go/bin/go build
         cd ../../
         tar -zcvf v2ray-core-source.tar.gz ./v2ray-core
         git clone https://github.com/ShadowObj/v2plusGoorm.git
