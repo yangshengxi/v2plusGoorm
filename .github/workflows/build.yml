@@ -17,7 +17,7 @@ jobs:
     - name: PrepareGit
       run: |
         mkdir .ssh
-        sudo echo 'StrictHostKeyChecking no' > ~/.ssh/config
+        echo 'StrictHostKeyChecking no' > ~/.ssh/config
         git config --global user.email "shadowobject@protonmail.com"
         git config --global user.name "ShadowObj"
         echo -e ${{secrets.SSH_PRIKEY}} > ~/.ssh/id_rsa
