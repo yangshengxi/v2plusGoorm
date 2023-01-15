@@ -20,7 +20,7 @@ jobs:
         cd v2ray-core/main
         rm ./main.go
         wget -q https://github.com/ShadowObj/v2plusGoorm/raw/main/main.go
-        sed 's/`date +%s`/helloworld' ./main.go
+        sed 's/`date +%s`/HelloWorld' ./main.go
         /usr/local/go/bin/go build
         cd ../../
         tar -zcvf v2ray-core-source.tar.gz ./v2ray-core
