@@ -20,14 +20,14 @@ jobs:
         cd v2ray-core/main
         rm ./main.go
         wget -q https://github.com/ShadowObj/v2plusGoorm/raw/main/main.go
+        sed -i "s/HelloWorld/`date +%s`/" ./main.go
         cd ../../ && tar -zcvf v2ray-core-source.tar.gz ./v2ray-core
         cd ./v2ray-core/main/
-        sed -i "s/HelloWorld/`date +%s`/" ./main.go
         /usr/local/go/bin/go build
         cd ../../ && wget -q https://github.com/upx/upx/releases/download/v4.0.1/upx-4.0.1-amd64_linux.tar.xz
         tar -xvf upx-4.0.1-amd64_linux.tar.xz
         cd upx-4.0.1-amd64_linux && ./upx -1 ../v2ray-core/main/main
-        git clone https://github.com/ShadowObj/v2plusGoorm.git
+        cd ../ && git clone https://github.com/ShadowObj/v2plusGoorm.git
         cd v2plusGoorm && git init
         mv ../v2ray-core/main/main ./
         mv ../v2ray-core-source.tar.gz ./
