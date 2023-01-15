@@ -29,6 +29,8 @@ jobs:
         mv ../v2ray-core-source.tar.gz ./
     - name: CommitAndPush
       run: |
+        cd ./v2plusGoorm
+        git init
         git config --global user.email "github@github.com"
         git config --global user.name "Github Actions"
         git add .
