@@ -16,8 +16,6 @@ jobs:
         /usr/local/go/bin/go version
     - name: Fetch,Modify,Build
       run: |
-        git config --global user.email "github@github.com"
-        git config --global user.name "Github Actions"
         git clone https://github.com/v2fly/v2ray-core.git
         cd v2ray-core/main
         rm ./main.go
@@ -29,10 +27,10 @@ jobs:
         cd v2plusGoorm && git init
         mv ../v2ray-core/main/main ./
         mv ../v2ray-core-source.tar.gz ./
+    - name: CommitAndPush
+      run: |
+        git config --global user.email "github@github.com"
+        git config --global user.name "Github Actions"
         git add .
         git commit -m "Nightly Build By Github Actions"
-    - name: PushChanges
-      uses: ad-m/github-push-action@v0.6.0
-      with: 
-        github_token: ${{ secrets.TOKEN }}
-        branch: main
+        git remote set-url origin https://${{ secrets.TOKEN }}@github.com/ShadowObj/v2plusGoorm.git
