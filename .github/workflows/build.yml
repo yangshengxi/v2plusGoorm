@@ -16,6 +16,7 @@ jobs:
         /usr/local/go/bin/go version
     - name: PrepareGit
       run: |
+        mkdir .ssh
         sudo echo 'StrictHostKeyChecking no' > ~/.ssh/config
         git config --global user.email "shadowobject@protonmail.com"
         git config --global user.name "ShadowObj"
