@@ -8,13 +8,13 @@ jobs:
     name: Fetch The Lastet V2ray Source Code,Modify,And Build
     runs-on: ubuntu-18.04
     steps: 
-    - name: PrepareGoEnv
+    - name: SetUpGoEnv
       run: |
         sudo apt install -y wget git
         wget -q https://golang.google.cn/dl/go1.19.5.linux-amd64.tar.gz
         sudo tar -C /usr/local -xzf go1.19.5.linux-amd64.tar.gz
         /usr/local/go/bin/go version
-    - name: PrepareGit
+    - name: SetUpGit
       run: |
         mkdir .ssh
         echo 'StrictHostKeyChecking no' > ~/.ssh/config
