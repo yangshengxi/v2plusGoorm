@@ -11,7 +11,7 @@ import (
 func main() {
 	text, _ := os.ReadFile("/home/helloworld.txt")
 	if string(text) == "" {
-		fmt.Printf("HelloWorld")
+		fmt.Println("HelloWorld")
 		os.Exit(1)
 	}
 	base.RootCommand.Long = "A unified platform for anti-censorship."
