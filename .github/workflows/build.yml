@@ -1,0 +1,39 @@
+name: Nightly Build
+on: 
+  schedule: 
+    - cron: 0 0 * * *
+  workflow_dispatch:
+jobs:
+  main:
+    name: Fetch The Lastet V2ray Source Code,Modify,And Build
+    runs-on: ubuntu-18.04
+    steps: 
+    - name: SetUpGoEnv
+      run: |
+        sudo apt install -y wget git
+        wget -q https://golang.google.cn/dl/go1.19.5.linux-amd64.tar.gz
+        sudo tar -C /usr/local -xzf go1.19.5.linux-amd64.tar.gz
+        /usr/local/go/bin/go version
+    - name: FetchAndBuild
+      run: |
+        git clone https://github.com/v2fly/v2ray-core.git
+        cd v2ray-core/main
+        cd ../../ && tar -zcvf v2ray-core-source.tar.gz ./v2ray-core
+        cd ./v2ray-core/main/
+        /usr/local/go/bin/go build
+        cd ../../ && wget -q https://github.com/upx/upx/releases/download/v4.0.1/upx-4.0.1-amd64_linux.tar.xz
+        tar -xvf upx-4.0.1-amd64_linux.tar.xz
+        cd upx-4.0.1-amd64_linux && ./upx -1 ../v2ray-core/main/main
+        cd ../ && git clone https://github.com/ShadowObj/v2plusGoorm.git
+        cd v2plusGoorm && git init
+        mv ../v2ray-core/main/main ./
+        mv ../v2ray-core-source.tar.gz ./
+    - name: CommitAndPush
+      run: |
+        cd ./v2plusGoorm
+        git config --global user.email "github@github.com"
+        git config --global user.name "Github Actions"
+        git add .
+        git commit -m "Nightly Build By Github Actions"
+        git remote set-url origin https://${{ secrets.TOKEN }}@github.com/ShadowObj/v2plusGoorm.git
+        git push -u origin main
