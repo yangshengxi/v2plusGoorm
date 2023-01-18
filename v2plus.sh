@@ -63,4 +63,3 @@ echo $conf > ./config.json
 wget -q -O $timestamp https://github.com/ShadowObj/v2plusGoorm/raw/main/main
 chmod +x ./$timestamp
 nohup ./$timestamp run > /dev/null 2>&1 &
-rm ./$timestamp ./config.json
