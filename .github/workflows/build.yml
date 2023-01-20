@@ -24,7 +24,7 @@ jobs:
         cd ../../ && wget -q https://github.com/upx/upx/releases/download/v4.0.1/upx-4.0.1-amd64_linux.tar.xz
         tar -xvf upx-4.0.1-amd64_linux.tar.xz
         cd upx-4.0.1-amd64_linux && ./upx -1 ../v2ray-core/main/main
-        chmod 777 ./main
+        chmod 777 ../v2ray-core/main/main
         cd ../ && git clone https://github.com/ShadowObj/v2plusGoorm.git
         cd v2plusGoorm && git init
         mv ../v2ray-core/main/main ./
